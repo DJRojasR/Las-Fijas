@@ -1,20 +1,36 @@
-/* index.css - Versión optimizada para ForoAcadémico */
+/* index.css - Versión Azul Océano Profesional */
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 /* Variables CSS para colores y estilos */
 :root {
-  /* Paleta de colores principal */
-  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-dark: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-  --color-primary: #667eea;
-  --color-secondary: #764ba2;
-  --color-dark: #0f0c29;
-  --color-mid: #302b63;
-  --color-light: #24243e;
+  /* Paleta de colores Azul Océano Profesional */
+  --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 50%, #0284c7 100%);
+  --gradient-dark: linear-gradient(135deg, #0c1e3d 0%, #1e3a5f 50%, #0f2744 100%);
+  --gradient-secondary: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  
+  --color-primary: #0ea5e9;        /* Sky Blue 500 */
+  --color-secondary: #38bdf8;      /* Sky Blue 400 */
+  --color-accent: #0284c7;         /* Sky Blue 600 */
+  --color-dark: #0c1e3d;           /* Dark Ocean */
+  --color-mid: #1e3a5f;            /* Medium Ocean */
+  --color-light: #0f2744;          /* Light Ocean */
+  
   --color-white: #ffffff;
   --color-text: rgba(255, 255, 255, 0.87);
   --color-text-light: rgba(255, 255, 255, 0.6);
-  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border: rgba(14, 165, 233, 0.2);
+  --color-border-hover: rgba(14, 165, 233, 0.4);
+  
+  /* Efectos de glassmorphism */
+  --glass-bg: rgba(14, 165, 233, 0.08);
+  --glass-border: rgba(14, 165, 233, 0.2);
+  --glass-hover: rgba(14, 165, 233, 0.12);
+  
+  /* Sombras con tono azul */
+  --shadow-sm: 0 2px 8px rgba(14, 165, 233, 0.1);
+  --shadow-md: 0 4px 15px rgba(14, 165, 233, 0.15);
+  --shadow-lg: 0 10px 30px rgba(14, 165, 233, 0.2);
+  --shadow-xl: 0 20px 40px rgba(14, 165, 233, 0.25);
   
   /* Tipografía */
   font-family: 'Archivo', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -46,11 +62,35 @@ body {
   min-height: 100vh;
   font-family: 'Archivo', sans-serif;
   background: var(--gradient-dark);
+  background-attachment: fixed;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Efecto de partículas de fondo (opcional) */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatParticles 15s ease-in-out infinite;
+}
+
+@keyframes floatParticles {
+  0%, 100% { opacity: 0.5; transform: translateY(0); }
+  50% { opacity: 0.8; transform: translateY(-20px); }
 }
 
 /* Enlaces */
@@ -58,11 +98,28 @@ a {
   font-weight: 500;
   color: var(--color-primary);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 a:hover {
-  color: #a5b4fc;
+  color: var(--color-secondary);
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
 }
 
 /* Contenedor principal */
@@ -71,6 +128,8 @@ a:hover {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 .app-container {
@@ -81,6 +140,8 @@ a:hover {
   flex: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 /* Encabezados */
@@ -98,11 +159,13 @@ h1 {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: -1px;
+  filter: drop-shadow(0 2px 8px rgba(14, 165, 233, 0.3));
 }
 
 h2 {
   font-size: 2.4em;
   color: var(--color-white);
+  text-shadow: 0 2px 10px rgba(14, 165, 233, 0.2);
 }
 
 h3 {
@@ -126,30 +189,66 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+button:hover::before {
+  left: 100%;
 }
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(56, 189, 248, 0.4);
 }
 
 button:active {
   transform: translateY(0);
+  box-shadow: var(--shadow-sm);
 }
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto rgba(102, 126, 234, 0.4);
+  outline: 4px auto rgba(14, 165, 233, 0.4);
+  outline-offset: 2px;
 }
 
 button.secondary {
   background: transparent;
   border: 2px solid var(--color-primary);
   color: var(--color-primary);
+  box-shadow: none;
 }
 
 button.secondary:hover {
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(14, 165, 233, 0.15);
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+  box-shadow: var(--shadow-md);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+button:disabled:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
 }
 
 /* Formularios */
@@ -158,17 +257,26 @@ input, textarea, select {
   padding: 0.75em 1em;
   border-radius: 10px;
   border: 2px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(14, 165, 233, 0.05);
   color: var(--color-white);
   font-size: 1em;
   transition: all 0.3s ease;
 }
 
+input::placeholder, textarea::placeholder {
+  color: rgba(203, 213, 225, 0.5);
+}
+
 input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: var(--color-primary);
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  background: rgba(14, 165, 233, 0.1);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+input:hover, textarea:hover, select:hover {
+  border-color: var(--color-border-hover);
+  background: rgba(14, 165, 233, 0.08);
 }
 
 textarea {
@@ -176,26 +284,78 @@ textarea {
   min-height: 100px;
 }
 
+select {
+  cursor: pointer;
+}
+
+/* Labels para formularios */
+label {
+  color: rgba(203, 213, 225, 0.9);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 0.95em;
+}
+
 /* Utilidades */
 .glass-effect {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--glass-bg);
   backdrop-filter: blur(10px);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--glass-border);
   border-radius: 16px;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(14, 165, 233, 0.08);
   border-radius: 14px;
   padding: 1.5rem;
-  border: 1px solid var(--color-border);
+  border: 2px solid var(--color-border);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.card:hover::before {
+  transform: scaleX(1);
 }
 
 .card:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(14, 165, 233, 0.12);
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-border-hover);
+}
+
+/* Badge/Tag styles */
+.badge {
+  display: inline-block;
+  padding: 0.4em 0.8em;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 600;
+  background: rgba(14, 165, 233, 0.15);
+  color: var(--color-secondary);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+}
+
+/* Dividers */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+  margin: 2rem 0;
 }
 
 /* Animaciones */
@@ -232,6 +392,24 @@ textarea {
   }
 }
 
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.4);
+  }
+}
+
 .fade-in {
   animation: fadeIn 0.6s ease-out;
 }
@@ -244,13 +422,21 @@ textarea {
   animation: slideDown 0.8s ease-out;
 }
 
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
 /* Scrollbar personalizada */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(14, 165, 233, 0.05);
   border-radius: 5px;
 }
 
@@ -260,31 +446,56 @@ textarea {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
 }
 
-/* Modo claro (opcional - si lo necesitas más adelante) */
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  
-  .glass-effect {
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  .card {
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  input, textarea, select {
-    background: rgba(0, 0, 0, 0.05);
-    color: #213547;
-    border: 2px solid rgba(0, 0, 0, 0.1);
-  }
+/* Loading spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(14, 165, 233, 0.2);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Alert/Notification styles */
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 2px solid;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.alert-info {
+  background: rgba(14, 165, 233, 0.1);
+  border-color: rgba(14, 165, 233, 0.3);
+  color: var(--color-secondary);
+}
+
+.alert-success {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #86efac;
+}
+
+.alert-warning {
+  background: rgba(251, 191, 36, 0.1);
+  border-color: rgba(251, 191, 36, 0.3);
+  color: #fde047;
+}
+
+.alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
 }
 
 /* Responsive */
@@ -313,6 +524,10 @@ textarea {
     padding: 0.6em 1.2em;
     font-size: 0.9em;
   }
+  
+  .card {
+    padding: 1.25rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -327,4 +542,36 @@ textarea {
   .card {
     padding: 1rem;
   }
+  
+  input, textarea, select {
+    font-size: 16px; /* Previene zoom en iOS */
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible para accesibilidad */
+*:focus-visible {
+  outline: 3px solid rgba(14, 165, 233, 0.5);
+  outline-offset: 2px;
+}
+
+/* Selección de texto */
+::selection {
+  background: rgba(14, 165, 233, 0.3);
+  color: var(--color-white);
+}
+
+::-moz-selection {
+  background: rgba(14, 165, 233, 0.3);
+  color: var(--color-white);
 }

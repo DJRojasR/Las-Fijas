@@ -1,4 +1,3 @@
-import React from 'react';
 import './Reglas.css';
 
 const Reglas = () => {
@@ -6,50 +5,32 @@ const Reglas = () => {
     {
       titulo: "Respeto y Profesionalismo",
       descripcion: "Mantén un tono respetuoso y profesional en todas las interacciones. Las críticas deben ser constructivas.",
-      icono: "🤝",
-      importancia: "alta"
+      icono: "🤝"
     },
     {
       titulo: "Veracidad de la Información",
       descripcion: "Solo publica reseñas basadas en experiencias reales. No se permiten inventos, exageraciones o falsedades.",
-      icono: "✅",
-      importancia: "alta"
+      icono: "✅"
     },
     {
       titulo: "Confidencialidad",
       descripcion: "No compartas información personal de profesores o estudiantes. Respeta la privacidad de todos.",
-      icono: "🔒",
-      importancia: "alta"
+      icono: "🔒"
     },
     {
       titulo: "Prohibido el Odio",
       descripcion: "No se toleran comentarios discriminatorios, de odio, acoso o ataques personales.",
-      icono: "🚫",
-      importancia: "crítica"
-    },
-    {
-      titulo: "Enfoque Académico",
-      descripcion: "Mantén el foco en aspectos académicos: metodología, conocimiento, evaluación, no en aspectos personales.",
-      icono: "🎓",
-      importancia: "media"
+      icono: "🚫"
     },
     {
       titulo: "Una Cuenta por Persona",
       descripcion: "No crees múltiples cuentas para manipular puntuaciones o reseñas.",
-      icono: "👤",
-      importancia: "media"
-    },
-    {
-      titulo: "Sin Publicidad",
-      descripcion: "No utilices el foro para promocionar servicios, productos o contenido externo.",
-      icono: "📢",
-      importancia: "media"
+      icono: "👤"
     },
     {
       titulo: "Reportar Problemas",
       descripcion: "Si encuentras contenido inapropiado, repórtalo usando el botón correspondiente.",
       icono: "🚨",
-      importancia: "media"
     }
   ];
 
@@ -62,6 +43,7 @@ const Reglas = () => {
   ];
 
   return (
+    
     <div className="reglas-container">
       {/* Encabezado */}
       <div className="reglas-header">
@@ -84,16 +66,12 @@ const Reglas = () => {
             {reglas.map((regla, index) => (
               <div 
                 key={index} 
-                className={`regla-card importancia-${regla.importancia}`}
+                className={`regla-card`}
               >
                 <div className="regla-icono">{regla.icono}</div>
                 <div className="regla-contenido">
                   <h3 className="regla-titulo">{regla.titulo}</h3>
                   <p className="regla-descripcion">{regla.descripcion}</p>
-                  <span className={`regla-importancia ${regla.importancia}`}>
-                    {regla.importancia === "alta" ? "Alta importancia" : 
-                     regla.importancia === "crítica" ? "Crítica" : "Importante"}
-                  </span>
                 </div>
               </div>
             ))}
@@ -158,17 +136,6 @@ const Reglas = () => {
             </div>
           </div>
         </section>
-
-        {/* Aceptación de reglas */}
-        <div className="aceptacion-reglas">
-          <div className="aceptacion-contenido">
-            <span className="aceptacion-icono">✅</span>
-            <p>
-              Al usar este foro, aceptas cumplir con estas reglas y contribuir a una 
-              comunidad académica respetuosa y constructiva.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );

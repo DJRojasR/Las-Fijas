@@ -1,9 +1,9 @@
-/* Navbar.css - Versión completa y corregida */
+/* Navbar.css - Versión Azul Océano Profesional */
 .navbar {
   font-family: 'Archivo', sans-serif;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(14, 165, 233, 0.08);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(14, 165, 233, 0.2);
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
@@ -14,6 +14,7 @@
   z-index: 1000;
   min-height: 70px;
   animation: slideDown 0.8s ease-out;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.1);
 }
 
 @keyframes slideDown {
@@ -33,23 +34,25 @@
   text-decoration: none;
   font-size: 1.8rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 50%, #0284c7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: -1px;
   transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 8px rgba(14, 165, 233, 0.3));
 }
 
 .navbar-logo:hover {
   transform: translateY(-2px);
+  filter: drop-shadow(0 4px 12px rgba(14, 165, 233, 0.5));
 }
 
 /* BOTÓN HAMBURGUESA (solo móvil) esta desactivado por defecto */
 .mobile-menu-toggle {
   display: none;
-  background: rgba(255, 255, 255, 0.08);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(14, 165, 233, 0.1);
+  border: 2px solid rgba(14, 165, 233, 0.3);
   border-radius: 10px;
   cursor: pointer;
   padding: 0.75rem;
@@ -64,18 +67,21 @@
 .hamburger-line {
   width: 24px;
   height: 2px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
   border-radius: 2px;
   transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(14, 165, 233, 0.4);
 }
 
 .mobile-menu-toggle:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(102, 126, 234, 0.3);
+  background: rgba(14, 165, 233, 0.15);
+  border-color: rgba(14, 165, 233, 0.5);
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
 }
 
 .mobile-menu-toggle:hover .hamburger-line {
-  background: white;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
 }
 
 /* ENLACES CENTRADOS */
@@ -103,19 +109,22 @@
   position: relative;
   overflow: hidden;
   white-space: nowrap;
+  border: 2px solid transparent;
 }
 
 .nav-link:hover {
   color: white;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(14, 165, 233, 0.1);
   transform: translateY(-2px);
+  border-color: rgba(14, 165, 233, 0.2);
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.15);
 }
 
 .nav-link.active {
   color: white;
-  background: rgba(102, 126, 234, 0.2);
-  border: 2px solid rgba(102, 126, 234, 0.4);
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
+  background: rgba(14, 165, 233, 0.15);
+  border: 2px solid rgba(14, 165, 233, 0.4);
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
 }
 
 .nav-link.active::before {
@@ -125,7 +134,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.2), transparent);
   animation: shimmer 2s infinite;
 }
 
@@ -149,6 +158,21 @@
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  border: 2px solid rgba(56, 189, 248, 0.3);
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(14, 165, 233, 0.4);
+  border-color: rgba(56, 189, 248, 0.6);
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
 }
 
 .btn-login::after {
@@ -158,7 +182,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
   transition: 0.5s;
 }
 
@@ -189,12 +213,12 @@
     left: -100%;
     width: 100%;
     height: calc(100vh - 70px);
-    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    background: linear-gradient(135deg, #0c1e3d 0%, #1e3a5f 50%, #0f2744 100%);
     flex-direction: column;
     padding: 2.5rem;
     transition: left 0.4s ease;
     backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(14, 165, 233, 0.2);
     z-index: 999;
     justify-content: flex-start;
     gap: 2rem;
@@ -222,14 +246,16 @@
   }
   
   .nav-link:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(14, 165, 233, 0.12);
     transform: translateX(10px);
+    border-color: rgba(14, 165, 233, 0.3);
   }
   
   .nav-link.active {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
-    border-color: #667eea;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(56, 189, 248, 0.2));
+    border-color: #0ea5e9;
     transform: translateX(5px);
+    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
   }
   
   /* Ocultar botón login en desktop móvil (irá dentro del menú) */
@@ -243,7 +269,7 @@
     width: 100%;
     margin-top: auto;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(14, 165, 233, 0.2);
   }
   
   .navbar-center.open .btn-login {
@@ -291,3 +317,40 @@
 .navbar-center.open .nav-link:nth-child(3) { animation-delay: 0.3s; }
 .navbar-center.open .nav-link:nth-child(4) { animation-delay: 0.4s; }
 .navbar-center.open .nav-link:nth-child(5) { animation-delay: 0.5s; }
+
+/* EFECTOS ADICIONALES AZUL OCÉANO */
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.5), transparent);
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Efecto de partículas flotantes (opcional) */
+.navbar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  animation: particlesFloat 8s ease-in-out infinite;
+}
+
+@keyframes particlesFloat {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 0.8; transform: translateY(-3px); }
+}
